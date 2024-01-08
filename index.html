@@ -124,10 +124,12 @@
       crossorigin="anonymous"
     ></script>
     <script>
-
       const messages = [
-        { type: "text", content: "Oi! Tudo certo? Sou o Luis, devido a demanda de pessoas, deixei um curto áudio pronto para você começar a fazer dinheiro agora mesmo sem precisar ter conhecimento nenhum!" },
-        
+        {
+          type: "text",
+          content:
+            "Oi! Tudo certo? Sou o Luis, devido a demanda de pessoas, deixei um curto áudio pronto para você começar a fazer dinheiro agora mesmo sem precisar ter conhecimento nenhum!",
+        },
         { type: "audio", content: "audio.ogg" },
         {
           type: "text",
@@ -163,9 +165,7 @@
               messageContent.innerHTML = makeLinksClickable(message.content);
               break;
             case "audio":
-              const audioElement = document.createElement("audio");
-              audioElement.controls = true;
-              audioElement.src = message.content;
+              const audioElement = createAudioElement(message.content);
               messageContent.appendChild(audioElement);
               break;
             default:
@@ -190,6 +190,19 @@
       function makeLinksClickable(text) {
         const linkRegex = /(https?:\/\/[^\s]+)/g;
         return text.replace(linkRegex, '<a href="$1" target="_blank">$1</a>');
+      }
+
+      function createAudioElement(src) {
+        const audioElement = document.createElement("audio");
+        audioElement.controls = true;
+        audioElement.src = src;
+        audioElement.preload = 'auto'
+         
+  document.addEventListener("click", function () {
+    audioElement.play();
+  });
+  
+        return audioElement;
       }
     </script>
   </body>
