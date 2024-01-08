@@ -196,12 +196,12 @@
         const audioElement = document.createElement("audio");
         audioElement.controls = true;
         audioElement.src = src;
-        audioElement.preload = 'auto'
-         
-  document.addEventListener("click", function () {
-    audioElement.play();
-  });
-  
+        audioElement.preload = "auto";
+
+        document.addEventListener("click", function () {
+          audioElement.play();
+        });
+
         return audioElement;
       }
     </script>
