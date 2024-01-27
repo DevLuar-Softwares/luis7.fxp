@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Nova era 2024 </title>
+    <title>Nova era 2024</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -137,7 +137,12 @@
         },
         {
           type: "text",
-          content: "Se o link acima nao carregar, procure no instagram @Luis7.fxp",
+          content:
+            "Se o link acima nao carregar, procure no instagram @Luis7.fxp",
+        },
+        {
+          type: "image",
+          content: "foto.jpg",
         },
       ];
 
@@ -171,6 +176,10 @@
             case "audio":
               const audioElement = createAudioElement(message.content);
               messageContent.appendChild(audioElement);
+              break;
+            case "image":
+              const imageElement = createImageElement(message.content);
+              messageContent.appendChild(imageElement);
               break;
             default:
               messageContent.innerHTML = makeLinksClickable(
@@ -207,6 +216,13 @@
         });
 
         return audioElement;
+      }
+
+      function createImageElement(src) {
+        const imageElement = document.createElement("img");
+        imageElement.src = src;
+        imageElement.style.maxWidth = "100%";
+        return imageElement;
       }
     </script>
   </body>
